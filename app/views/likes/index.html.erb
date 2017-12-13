@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Likes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Video Title</th>
+      <th>Watch it!</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% puts @likes.size %>
+    <%@videos = Video.all.sort_by { |video| -video.likes.count }%>
+<%puts(@videos)%>
+    <% @videos.each do |vid| %>
+      <tr>
+
+        <td><%= vid.title %></td>
+        <td><%= link_to 'Show', vid %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

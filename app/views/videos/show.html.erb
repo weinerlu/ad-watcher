@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @video.title %>
+</p>
+
+<p>
+  <iframe width="560" height="315" src= "https://www.youtube.com/embed/<%= @video.URL %>"frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+</p>
+
+<%if logged_in?%>
+<%= link_to 'Like this video', "/videos/#{@video.id}/like", method: :post%>
+<%end%>
+<%= link_to 'Back', videos_path %>

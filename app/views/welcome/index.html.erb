@@ -1,0 +1,33 @@
+<% if logged_in? %>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <%= render 'videos/form', video: @video %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <% if @videos.empty? %>
+        <p class="text-center">There aren't any videos yet, you should upload one!</p>
+      <% else %>
+        <% @videos.each do |video| %>
+      <tr>
+        <td><%= video.title %></td>
+        <td><%= video.URL %></td>
+        <td><%= link_to 'Show', video %></td>
+        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <br>
+      </tr>
+    <% end %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <h1>Welcome to Ad Watcher!</h1>
+      <p>Sign up or log in to get started!</p>
+      <p>So here's how this works. You log in and can watch any videos you want. After you watch a video, update your profile to add your watchtime. You can like any videos you watch as many times as you like, and you can access a sorted view of these videos. You can also upload any video from youtube! Just take the URL and delete "https://www.youtube.com/watch?v=" </p>
+    </div>
+  </div>
+<% end %>
